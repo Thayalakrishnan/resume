@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Rolling Stone Top 500 albums of all time</title>
+  <meta name="description" content="List of players in the NBA">
+  <link rel="stylesheet" href="https://cdn.datatables.net/v/bs4/dt-1.10.21/fh-3.1.7/r-2.2.5/sp-1.1.1/datatables.css"/>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css">
+  <!--<link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">-->
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <table id="players" class="table nowrap" style="width:100%" data-server-side="true" data-ajax="/api/players/?format=datatables">
+          <thead>
+            <tr>
+              <th data-data="player_id">player_id</th>
+              <th data-data="first_name">first_name</th>
+              <th data-data="last_name">last_name</th>
+              <th data-data="birthdate">birthdate</th>
+              <th data-data="team_id">team_id</th>
+              <th data-data="jersey">jersey</th>
+              <th data-data="season_exp">season_exp</th>
+              <th data-data="height">height</th>
+              <th data-data="weight">weight</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script src="//cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+  <script src="https://cdn.datatables.net/v/bs4/dt-1.10.21/fh-3.1.7/r-2.2.5/sp-1.1.1/datatables.js"></script>
+  <script>
+      $(document).ready(function() {
+          $('#players').DataTable( {
+            responsive: true
+          });
+      });
+  </script>
+</body>
+</html>
+
+ 

@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="card-columns">
+  {% for current_team in teams %}
+  <div class="card bg-dark">
+    <div class="card-header">
+      <h5 class="text-center">
+        <a href="{% url 'nba:team-detail' current_team.team_id %}">{{ current_team.full_name }}</a>
+      </h5>
+    </div>
+    <!-- Header -->
+    <!-- Body -->
+    <div class="card-body">
+      <!-- table -->
+      <div class="table-responsive text-center">
+        <table class="table table-hover table-sm table-bordered table-dark">
+          <tbody>
+            <tr>
+              <td class='text-left'>City</td>
+              <td class='text-left'>{{ current_team.city }}</td>
+            </tr>
+            <tr>
+              <td class='text-left'>State</td>
+              <td class='text-left'>{{ current_team.state }}</td>
+            </tr>
+            <tr>
+              <td class='text-left'>Owner</td>
+              <td class='text-left'>{{ current_team.owner }}</td>
+            </tr>
+            <tr>
+              <td class='text-left'>GM</td>
+              <td class='text-left'>{{ current_team.generalmanager }}</td>
+            </tr>
+            <tr>
+              <td class='text-left'>Headcoach</td>
+              <td class='text-left'>{{ current_team.headcoach }}</td>
+            </tr>
+            <tr>
+              <td class='text-left'>Arena</td>
+              <td class='text-left'>{{ current_team.arena }}</td>
+            </tr>
+            <tr>
+              <td class='text-left'>Capacity</td>
+              <td class='text-left'>{{ current_team.arenacapacity }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- roster -->
+      <div class="table-responsive text-center">
+        <table class="table table-hover table-sm table-bordered table-dark">
+          <tbody>
+            <tr>
+              <th colspan="2">Team Roster</td>
+            </tr>
+            {% for current_player in current_team.get_players %}
+            <tr>
+              <td class='text-left'>
+                <a href="{{ current_player.get_absolute_url }}">{{ current_player.full_name }}</a>
+              </td>
+              <td>{{ current_player.jersey }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <!-- end roster -->
+    </div>
+    <!-- end Body -->
+    <!-- footer -->
+    <div class="card-footer">
+      <h5 class="text-center">
+        <a class="card-link" href="{% url 'nba:team-schedule' current_team.team_id %}"> schedule </a>
+      </h5>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock content %}

@@ -1,0 +1,122 @@
+{% extends 'post_base.html' %}
+{% load static %}
+{% block postcontent %}
+
+    <div class="container">
+      <!-- Post-->
+      {% for obj in object_list %}
+      <div class="row d-flex align-items-stretch">
+      {% if not forloop.first and not forloop.last %}
+      <div class="image col-lg-5"><img src='{{ obj.thumbnail.url }}' alt="..."></div>
+      {% endif %}
+        <div class="text col-lg-7">
+          <div class="text-inner d-flex align-items-center">
+            <div class="content">
+              <header class="post-header">
+                <div class="category">
+                  {% for cat in obj.categories.all %}
+                  <a href="#">{{ cat }}</a>
+                  {% endfor %}
+                </div>
+                <a href="{{ obj.get_absolute_url }}">
+                  <h2 class="h4">{{ obj.title }}</h2>
+                </a>
+              </header>
+              <p>{{ obj.overview }}</p>
+              <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
+                  <div class="avatar"><img src='{{ obj.author.profile_picture.url }}' alt="..." class="img-fluid"></div>
+                  <div class="title"><span>{{ obj.author }}</span></div></a>
+                <div class="date"><i class="icon-clock"></i> {{ obj.timestamp|timesince }} ago</div>
+                <div class="comments"><i class="icon-comment"></i>{{ obj.comment_count }}</div>
+              </footer>
+            </div>
+          </div>
+        </div>
+        {% if forloop.first or forloop.last %}
+        <div class="image col-lg-5"><img src='{{ obj.thumbnail.url }}' alt="..."></div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Latest Posts -->
+    <section class="latest-posts"> 
+      <div class="container">
+        <header> 
+          <h2> Latest Posts </h2>
+          <p class="text-big">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </header>
+        <div class="row">
+          {% for obj in latest %}
+          <div class="post col-md-4">
+            <div class="post-thumbnail"><a href="#"><img src='{{ obj.thumbnail.url }}' alt="..." class="img-fluid"></a></div>
+            <div class="post-details">
+              <div class="post-meta d-flex justify-content-between">
+                <div class="date">{{ obj.timestamp }}</div>
+                <div class="category">
+                  {% for cat in obj.categories.all %}
+                  <a href="#">{{ cat }}</a>
+                  {% endfor %}
+                </div>
+              </div><a href="#">
+                <h3 class="h4">{{ obj.title }}</h3></a>
+              <p class="text-muted">{{ obj.overview }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Gallery Section-->
+    <section class="gallery no-padding">
+      <div class="row">
+        <div class="mix col-lg-3 col-md-3 col-sm-6">
+          <div class="item">
+            <a href="img/gallery-1.jpg" class="image">
+              <img src='{% static "img/gallery-1.jpg" %}' alt="..." class="img-fluid">
+              <div class="overlay d-flex align-items-center justify-content-center">
+                <i class="icon-search"></i>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="mix col-lg-3 col-md-3 col-sm-6">
+          <div class="item">
+            <a href="img/gallery-2.jpg" class="image">
+              <img src='{% static "img/gallery-2.jpg" %}' alt="..." class="img-fluid">
+              <div class="overlay d-flex align-items-center justify-content-center">
+                <i class="icon-search"></i>
+              </div>
+            </a>
+          </div>
+        </div>
+        
+        
+        <div class="mix col-lg-3 col-md-3 col-sm-6">
+          <div class="item">
+            <a href="img/gallery-3.jpg" class="image">
+              <img src='{% static "img/gallery-3.jpg" %}' alt="..." class="img-fluid">
+              <div class="overlay d-flex align-items-center justify-content-center">
+                <i class="icon-search"></i>
+              </div>
+            </a>
+          </div>
+        </div>
+        
+        <div class="mix col-lg-3 col-md-3 col-sm-6">
+          <div class="item">
+            <a href="img/gallery-4.jpg" class="image">
+              <img src='{% static "img/gallery-4.jpg" %}' alt="..." class="img-fluid">
+              <div class="overlay d-flex align-items-center justify-content-center">
+                <i class="icon-search"></i>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock postcontent %}

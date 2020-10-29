@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+<header class="blog-header py-3">
+    <div class="row flex-nowrap justify-content-center align-items-center">
+        <div class="col-4 text-center">
+            <a class="blog-header-logo text-dark" href="{% url 'index' %}"> Dear Diary </a>
+        </div>
+    </div>
+</header>
+
+<div class="nav-scroller py-1 mb-2">
+    <nav class="nav d-flex justify-content-center">
+        <a class="p-2 text-muted" href="{% url 'blogindex'%}">Blog Home</a>
+        <a class="p-2 text-muted" href="{% url 'authors' %}">All Authors</a>
+        <a class="p-2 text-muted" href="{% url 'books' %}">All Books</a>
+    </nav>
+</div>
+
+{% block blogcontent %}{% endblock blogcontent %}
+
+<div class="container">
+    {% block pagination %}
+        {% if is_paginated %}
+            <div class="pagination">
+                <span class="page-links">
+                    {% if page_obj.has_previous %}
+                        <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+                    {% endif %}
+                    <span class="page-current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+                    {% if page_obj.has_next %}
+                        <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+                    {% endif %}
+                </span>
+            </div>
+        {% endif %}
+    {% endblock %}
+</div>
+
+
+
+{% endblock content%}

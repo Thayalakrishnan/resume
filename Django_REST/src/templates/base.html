@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load bootstrap4 %}
+{% load static %}
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        {% bootstrap_css %}
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/searchpanes/1.1.1/css/searchPanes.bootstrap4.min.css">
+        
+    </head>
+    <body>
+        {% include 'navbar.html' %}
+        <div class="container">
+            {% block content %}
+            {% endblock content %}
+        </div>
+        <br>
+    <script src="js/jquery.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/searchpanes/1.1.1/js/searchPanes.bootstrap4.min.js"></script>
+    {% bootstrap_javascript jquery='full' %}
+    </body>
+</html>

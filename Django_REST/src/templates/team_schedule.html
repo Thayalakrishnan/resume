@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<h1 class="text-center"> Team Results </h1>
+<div class="table-responsive text-center">
+    <table class="table table-hover table-sm table-bordered table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Game Number</th>
+                <th scope="col">Opponent</th>
+                <th scope="col">Court Advantage</th>
+                <th scope="col">Date</th>
+                <th scope="col">Result</th>
+                <th scope="col">Wins</th>
+                <th scope="col">Losses</th>
+                <th scope="col">Win%</th>
+                <th scope="col">Minutes</th>
+                <th scope="col">Points</th>
+                <th scope="col">FGs</th>
+                <th scope="col">FG Attempted</th>
+                <th scope="col">FG%</th>
+                <th scope="col">3PT FGs</th>
+                <th scope="col">3PT Attempts</th>
+                <th scope="col">3PT FG%</th>
+                <th scope="col">FTs</th>
+                <th scope="col">FT Attempts</th>
+                <th scope="col">FT%</th>
+                <th scope="col">Off. Reb.</th>
+                <th scope="col">Def. Reb.</th>
+                <th scope="col">Total Reb.</th>
+                <th scope="col">Asts</th>
+                <th scope="col">Stls</th>
+                <th scope="col">Blks</th>
+                <th scope="col">TO</th>
+                <th scope="col">FLs</th>
+                <th scope="col">Game ID</th>
+            </tr>
+        </thead>
+        <tbody class="text-nowrap">
+        {% for game in gamelog %}
+            <tr>
+                <th scope="row">{{ forloop.revcounter }}</th>
+                <td class="text-left">
+                    <a href="{% url 'nba:team-detail' game.OPPONENT.team_id %}">{{ game.OPPONENT }}</a>
+                </td>
+                <td>{{ game.COURTADVANTAGE }}</td>
+                <td>{{ game.GAME_DATE }}</td>
+                <td>{{ game.WL }}</td>
+                <td>{{ game.W }}</td>
+                <td>{{ game.L }}</td>
+                <td>{{ game.W_PCT }}</td>
+                <td>{{ game.MIN }}</td>
+                <td>{{ game.PTS }}</td>
+                <td>{{ game.FGM }}</td>
+                <td>{{ game.FGA }}</td>
+                <td>{{ game.FG_PCT }}</td>
+                <td>{{ game.FG3M }}</td>
+                <td>{{ game.FG3A }}</td>
+                <td>{{ game.FG3_PCT }}</td>
+                <td>{{ game.FTM }}</td>
+                <td>{{ game.FTA }}</td>
+                <td>{{ game.FT_PCT }}</td>
+                <td>{{ game.OREB }}</td>
+                <td>{{ game.DREB }}</td>
+                <td>{{ game.REB }}</td>
+                <td>{{ game.AST }}</td>
+                <td>{{ game.STL }}</td>
+                <td>{{ game.BLK }}</td>
+                <td>{{ game.TOV }}</td>
+                <td>{{ game.PF }}</td>
+                <td>{{ game.Game_ID }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

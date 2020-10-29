@@ -1,0 +1,19 @@
+<html>
+    <body>
+        <h1>Posts</h1>
+        <ul>
+            {% for post in queryset %}
+            <li>
+                <a href="{% url 'core:post-detail' post.pk %}">
+                    {{ post.title }}
+                </a>
+            </li>
+            <li>
+                <a>
+                    {{ post.description }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

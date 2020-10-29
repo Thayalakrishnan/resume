@@ -1,0 +1,46 @@
+{% extends "catalogbase.html" %}
+{% block libcontent %}
+<div>
+    <div class="row flex-nowrap justify-content-center align-items-center">
+        <p>Welcome to LocalLibrary</p>
+        <p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-body flex-column align-items-start">
+                <strong class="d-inline-block mb-2 text-primary">Dynamic content</strong>
+                <h3 class="mb-0">
+                    <a class="text-dark" href="#">The library has the following record counts:</a>
+                </h3>
+                <p></p>
+                <p class="card-text mb-auto">
+                    <li><strong>Books:</strong> {{ num_books }}</li>
+                    <li><strong>Copies:</strong> {{ num_instances }}</li>
+                    <li><strong>Copies available:</strong> {{ num_instances_available }}</li>
+                    <li><strong>Authors:</strong> {{ num_authors }}</li>
+                    <li><strong>Genres:</strong> {{ num_genre }}</li>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <div class="card-body flex-column align-items-start">
+                <strong class="d-inline-block mb-2 text-success">Links</strong>
+                <h3 class="mb-0">
+                    <a class="text-dark" href="#">Learn More</a>
+                </h3>
+                <p></p>
+                <p class="card-text mb-auto">
+                    <li><a href="{% url 'catalogindex' %}">Home</a></li>
+                    <li><a href="{% url 'books' %}">All books</a></li>
+                    <li><a href="{% url 'authors' %}">All authors</a></li>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock libcontent %}

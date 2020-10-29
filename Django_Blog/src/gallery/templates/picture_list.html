@@ -1,0 +1,48 @@
+{% extends 'gallery_base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{% block gallerycontent %}
+<link rel="stylesheet" href="{% static 'css/galleryhover.css' %}">
+
+<div class="container">
+  <div class="card-columns">
+    {% for pic in page_obj %}
+    <div class="hovereffect">
+      <div class="card">
+        <img class="card-img" src="{{ pic.picture.url }}" alt="Card image">
+        <div class="overlay">
+          <div class="card bg-danger">
+            <h2>{{ pic.title }}</h2>
+            <p class="icon-links"><a>{{ pic.author }}</a></p>
+            <p class="icon-links"><a>{{ pic.timestamp|timesince }}</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+
+
+
+  <!-- Pagination -->
+  <nav aria-label="Page navigation example">
+    <ul class="pagination pagination-template d-flex justify-content-center">
+      {% if page_obj.has_previous %}
+      <li class="page-item"><a href="?{{ page_request_var }}={{ page_obj.previous_page_number }}" class="page-link"> <i
+            class="fa fa-angle-left"></i></a></li>
+      {% endif %}
+      <li class="page-item"><a href="?{{ page_request_var }}={{ page_obj.number }}"
+          class="page-link active">{{ page_obj.number }}</a></li>
+      {% if page_obj.has_next %}
+      <li class="page-item"><a href="?{{ page_request_var }}={{ page_obj.next_page_number }}" class="page-link"> <i
+            class="fa fa-angle-right"></i></a></li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>
+
+{% endblock gallerycontent %}

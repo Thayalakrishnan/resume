@@ -1,0 +1,29 @@
+<nav class="navbar mb-5 navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="http://127.0.0.1:8000">Basketball shit</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09"
+        aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarsExample09">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="http://127.0.0.1:8000">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="http://127.0.0.1:8000/nba/">NBA Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'nba:player-list' %}">Player List</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'nba:team-list' %}">Team List</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'nba:team-table' %}">Team Table</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="http://127.0.0.1:8000/admin/">Admin</a>
+            </li>
+        </ul>
+    </div>
+</nav>

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{% block content %}
+
+<div class="mb-2">
+    {% block gallerynavbarcontent %}{% include 'gallery_navbar.html' %}{% endblock gallerynavbarcontent %}
+</div>
+
+{% block gallerycontent %}{% endblock gallerycontent %}
+
+{% endblock content%}

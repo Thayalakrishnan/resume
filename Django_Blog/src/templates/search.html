@@ -1,0 +1,45 @@
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_javascript jquery='full' %}
+
+{% block searchcontent %}
+<header id="header-1" class="header">
+    <nav class="header-nav">
+        <ul class="nav nav-tabs nav-fill nav-justified no-wrap">
+            <li class="nav-item">
+                <a class="hoverbtn effect-6" href="#"> Portfolio </a>
+            </li>
+            <li class="nav-item">
+                <a class="hoverbtn effect-6" href="{% url 'post-index' %}"> Posts </a>
+            </li>
+            <li class="nav-item">
+                <a class="hoverbtn effect-6" href="#"> Jupyter </a>
+            </li>
+            <li class="nav-item">
+                <a class="hoverbtn effect-6" href="#"> BBall </a>
+            </li>
+            <li class="nav-item">
+                <a class="hoverbtn effect-6" href="{% url 'blogindex' %}"> Dear Diary </a>
+            </li>
+            <li class="nav-item">
+                <a class="hoverbtn effect-6" href="#"> Resume </a>
+            </li>
+            <li class="nav-item">
+                <a class="hoverbtn effect-6" href="{% url 'catalogindex' %}"> Catalog </a>
+            </li>
+            <li class="nav-item">
+                <a class="hoverbtn effect-6" href="{% url 'gallery-index' %}"> Gallery </a>
+            </li>
+            <li class="nav-item">
+                <a class="hoverbtn effect-6" href="http://127.0.0.1:8000/admin/"> Admin </a>
+            </li>
+            <li class="nav-item search-button">
+                <a class="search-toggle hoverbtn effect-6" data-selector="#header-1" href="#"> Search</a>
+            </li>
+        </ul>
+        <form action="" class="search-box">
+            <input type="text" class="text search-input" placeholder="Type here to search..." />
+        </form>
+    </nav>
+</header>
+{% endblock searchcontent %}

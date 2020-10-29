@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<h1> Player Details </h1>
+<h3> player_id: {{ player.player_id }}</h3>
+<h3> full_name: {{ player.full_name }}</h3>
+<h3> first_name: {{ player.first_name }}</h3>
+<h3> last_name: {{ player.last_name }}</h3>
+<h3> birthdate: {{ player.birthdate }}</h3>
+<h3> is_active: {{ player.is_active }}</h3>
+<h3> team_id: {{ player.team_id }}</h3>
+<h3> jersey: {{ player.jersey }}</h3>
+<h3> from_year: {{ player.from_year }}</h3>
+<h3> to_year: {{ player.to_year }}</h3>
+<h3> season_exp: {{ player.season_exp }}</h3>
+<h3> draft_year: {{ player.draft_year }}</h3>
+<h3> draft_round: {{ player.draft_round }}</h3>
+<h3> draft_number: {{ player.draft_number }}</h3>
+<h3> height: {{ player.height }}</h3>
+<h3> weight: {{ player.weight }}</h3>
+{% endblock content %}

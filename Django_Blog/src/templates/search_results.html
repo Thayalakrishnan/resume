@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <header class="blog-header">
+        <div class="row flex-nowrap justify-content-center align-items-center">
+            <a class="blog-header-logo text-dark" href="{% url 'index' %}"> Search Results </a>
+        </div>
+    </header>
+</div>
+
+<div class="container mt-4">
+    <div class="card-columns">
+        <!-- Blog Entries Column -->
+        {% for q in blog_queryset %}
+        <div class="card mb-3">
+        <img class="card-img-top" src="{{q.cover.url}}" alt="Card image cap">
+        <div class="card-body">
+            <p class="blog-header-logo" href="{{ q.get_absolute_url }}">{{ q.title }}</p>
+            <p class="card-text text-muted h6">{{ q.author }} | {{ q.created_on}} </p>
+            <p class="card-text">{{q.content|slice:":200" }}</p>
+            <a href="{{ q.get_absolute_url }}" class="btn btn-primary">Read More &rarr;</a>
+        </div>
+        </div>
+        {% endfor %}
+        {% for q in catalog_queryset %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <p class="blog-header-logo" href="{{ q.get_absolute_url }}">{{ q.title }}</p>
+                <p class="card-text text-muted h6">{{ q.author }}</p>
+                <a href="{{ q.get_absolute_url }}" class="btn btn-primary">Read More &rarr;</a>
+            </div>
+        </div>
+        {% endfor %}
+        {% for q in posts_queryset %}
+        <div class="card mb-3">
+            <img class="card-img-top" src="{{q.thumbnail}}" alt="Card image cap">
+            <div class="card-body">
+                <p class="blog-header-logo" href="{{ q.get_absolute_url }}">{{ q.title }}</p>
+                <p class="card-text text-muted h6">{{ q.author }} | {{ q.created_on}} </p>
+                <p class="card-text">{{q.slug|slice:":200" }}</p>
+                <a href="{{ q.get_absolute_url }}" class="btn btn-primary">Read More &rarr;</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

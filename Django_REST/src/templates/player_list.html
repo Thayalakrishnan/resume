@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<h1 class="text-center"> Players </h1>
+<div class="table-responsive text-center">
+    <table class="table table-hover table-sm table-bordered table-dark">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Birthdate</th>
+                <th scope="col">Team</th>
+                <th scope="col">Number</th>
+                <th scope="col">Seasons</th>
+                <th scope="col">Height</th>
+                <th scope="col">Weight</th>
+            </tr>
+        </thead>
+        <tbody class="text-nowrap">
+        {% for player in queryset %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td class="text-left"><a href="{% url 'nba:player-detail' player.player_id %}">{{ player.full_name }}</a></td>
+                <td class="text-left">{{ player.birthdate }}</td>
+                <td class="text-left"><a href="{% url 'nba:team-detail' player.team_id %}">{{ player.team_id.full_name }}</a></td>
+                <td class="text-left">{{ player.jersey }}</td>
+                <td class="text-left">{{ player.season_exp }}</td>
+                <td class="text-left">{{ player.height }}</td>
+                <td class="text-left">{{ player.weight }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock content %}
+
+

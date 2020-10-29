@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block content %}
+<!-- Carousel  -->
+<div class="container shadow-lg">
+  <div id="demo" class="carousel slide" data-ride="carousel">
+
+    <!-- Indicators -->
+    <ul class="carousel-indicators">
+      {% for pic in starred %}
+      <li data-target="#demo" data-slide-to="{{ forloop.counter0 }}"></li>
+      {% endfor %}
+    </ul>
+
+    <div class="carousel-inner">
+      {% for pic in starred %}
+      {% if forloop.first %}
+      <div class="carousel-item active">
+      {% else %}
+      <div class="carousel-item">
+        {% endif %}
+        <img src="{{ pic.picture.url }}" class="img-fluid" alt="Responsive image">
+        <div class="carousel-caption">
+          <h3>{{ pic.title }}</h3>
+          <p>{{ pic.caption }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Left controls -->
+    <a class="carousel-control-prev" href="#demo" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <!-- Right controls -->
+    <a class="carousel-control-next" href="#demo" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+
+<div class="progress">
+  {% for pic in starred %}
+  <div class="progress-bar" role="progressbar" aria-valuenow="{{ forloop.counter0 }}" aria-valuemin="0" aria-valuemax="2"></div>
+  {% endfor %}
+</div>
+
+<!-- Featured -->
+
+<!-- Main Blog -->
+<div class="container">
+  <!-- Post Header -->
+  <header class="blog-header">
+    <div class="d-flex justify-content-center align-items-center">
+      <a class="blog-header-logo text-dark" href="#"></a>
+    </div>
+  </header>
+  <header class="blog-header py-3">
+    <div class="d-flex justify-content-center align-items-center">
+      <div class="text-center">
+        <a class="blog-header-logo text-dark" href="#"> Posts </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Jupyter -->
+
+    
+    <!-- Post -->
+    {% for post in object_list %}
+    <div class="blog-post">
+      <h2 class="blog-post-title">{{ post.title }}</h2>
+      <p class="blog-post-meta">{{ post.timestamp }}</p>
+      <img src="{{ post.thumbnail.url }}" class="img-fluid rounded" alt="Responsive image">
+      <div class="post-body">
+        {{ post.slug }}
+        {{ post.content | safe }}
+      </div>
+    </div>
+    {% endfor %}
+
+
+
+</div>
+
+<div class="container">
+  <!-- Pagination -->
+  <nav class="blog-pagination d-flex justify-content-center">
+    <a class="btn btn-outline-primary" href="#">Older</a>
+    <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
+  </nav>
+</div>
+
+<div class="container">
+  {% block jumbotroncontent %}
+  {% include 'jumbotron.html' %}
+  {% endblock jumbotroncontent %}
+</div>
+
+<div class="container">
+  {% block jupytercontent %}
+  {% include 'python_odd_or_even.html' %}
+  {% endblock jupytercontent %}
+</div>
+
+{% endblock content %}
+

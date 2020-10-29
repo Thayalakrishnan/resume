@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <!-- Head -->
+    <head>
+        {% load static %}
+
+        {% block headcontent %}
+        {% include 'head.html' %}
+        {% endblock headcontent %}
+
+        
+        {% load bootstrap4 %}
+        {% bootstrap_css %}
+    </head>
+    <body>
+        <!-- Header -->
+        <div class="container border">
+            {% block headercontent %}
+            {% include 'header.html' %}
+            {% endblock headercontent %}
+        </div>
+        <!-- Nav/Search bar -->
+        <div class="container border">
+            {% block searchcontent %}
+            {% include 'search.html' %}
+            {% endblock searchcontent %}
+        </div>
+
+        <div class="container border">
+            <!-- Main Content -->
+            {% block content %}
+            {% endblock content %}
+        </div>
+
+        <!-- Footer -->
+        <div class="container border py-2">
+            {% block footercontent %}
+            {% include 'footer.html' %} 
+            {% endblock footercontent %}
+
+            <!-- Scripts -->
+            {% block scriptscontent %}
+            {% include 'scripts.html' %}
+            {% endblock scriptscontent %}
+        </div>
+    </body>
+</html>

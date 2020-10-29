@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<h1> Team Details </h1>
+<h3> team_id: {{ team.team_id }}</h3>
+<h3> full_name: {{ team.full_name }}</h3>
+<h3> abbreviation: {{ team.abbreviation }}</h3>
+<h3> nickname: {{ team.nickname }}</h3>
+<h3> year_founded: {{ team.year_founded }}</h3>
+<h3> owner: {{ team.owner }}</h3>
+<h3> generalmanager: {{ team.generalmanager }}</h3>
+<h3> headcoach: {{ team.headcoach }}</h3>
+<h3> city: {{ team.city }}</h3>
+<h3> state: {{ team.state }}</h3>
+<h3> arena: {{ team.arena }}</h3>
+<h3> arenacapacity: {{ team.arenacapacity }}</h3>
+<h3> team_conference: {{ team.team_conference }}</h3>
+<h3> team_division: {{ team.team_division }}</h3>
+<h3> primary_color: {{ team.primary_color }}</h3>
+<h3> secondary_color: {{ team.secondary_color }}</h3>
+<h3> tertiary_color: {{ team.tertiary_color }}</h3>
+<h3>
+    <a href="{% url 'nba:team-schedule' team.team_id %}">schedule</a>
+</h3>
+{% endblock content %}

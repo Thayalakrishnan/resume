@@ -1,0 +1,107 @@
+{% extends 'gallery_base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{% block gallerycontent %}
+<link rel="stylesheet" href="{% static 'css/galleryhover.css' %}">
+
+<div class="border">
+  <!-- starred pictures Column -->
+  <div class="text-center border">
+    <a class="blog-header-logo text-dark" href="{% url 'index' %}"> Starred Pictures in Columns </a>
+  </div>
+
+  <div class="card-columns border"> 
+    {% for post in starred_pictures %}
+    <div class="card">
+      <img class="card-img-top" src="{{post.picture.url}}" alt="Card image cap">
+        <div class="card-body">
+            <p class="blog-header border">{{ post.title }}</p>
+            <p class="card-text text-muted h6 border">{{ post.author }} | {{ post.date}} </p>
+            <p class="card-text border">{{post.caption|slice:":200" }}</p>
+            <a href="{% url 'picture-detail' post.slug  %}" class="btn btn-primary">Read More &rarr;</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  
+  <!-- starred pictures-->
+  <div class="text-center border">
+    <a class="blog-header-logo text-dark" href="{% url 'index' %}"> Starred Pictures </a>
+  </div>
+  {% for obj in starred_pictures %}
+  <div class="d-flex justify-content-between border">
+    {% if not forloop.first and not forloop.last %}
+    <div class="image border">
+      <img src='{{ obj.picture.url }}' width="200px" height="200px" alt="...">
+    </div>
+    {% endif %}
+    <div class="text border">
+      <div class="text-inner d-flex align-items-center">
+        <div class="content">
+          <header class="post-header border">
+            <a href="{{ obj.get_absolute_url }}">
+              <h2 class="h4">{{ obj.title }}</h2>
+            </a>
+          </header>
+          <p class="border">{{ obj.caption }}</p>
+          <footer class="post-footer d-flex align-items-center">
+            <a href="#" class="author d-flex align-items-center flex-wrap">
+              <div class="date border"><i class="icon-clock"></i> {{ obj.timestamp|timesince }} ago</div>
+            </a>
+          </footer>
+        </div>
+      </div>
+    </div>
+    {% if forloop.first or forloop.last %}
+    <div class="image border">
+      <img src='{{ obj.picture.url }}' width="200px" height="200px" alt="...">
+    </div>
+    {% endif %}
+  </div>
+  {% endfor %}
+  
+  <!-- latest pictures-->
+  <div class="text-center border">
+    <a class="blog-header-logo text-dark" href="{% url 'index' %}"> Latest Pictures </a>
+  </div>
+
+  {% for pic in latest_pictures %}
+  <div class="d-flex justify-content-between border">
+    {% if not forloop.first and not forloop.last %}
+    <div class="image border">
+      <img src='{{ pic.picture.url }}' width="200px" height="200px" alt="...">
+    </div>
+    {% endif %}
+    <div class="text border">
+      <div class="text-inner d-flex align-items-center">
+        <div class="content">
+          <header class="post-header border">
+            <a href="{{ pic.get_absolute_url }}">
+              <h2 class="h4">{{ pic.title }}</h2>
+            </a>
+          </header>
+          <p class="border">{{ pic.caption }}</p>
+          <footer class="post-footer d-flex align-items-center">
+            <a href="#" class="author d-flex align-items-center flex-wrap">
+              <div class="date border"><i class="icon-clock"></i>{{ pic.timestamp|timesince }} ago</div>
+            </a>
+          </footer>
+        </div>
+      </div>
+    </div>
+    {% if forloop.first or forloop.last %}
+    <div class="image border">
+      <img src='{{ pic.picture.url }}' width="200px" height="200px" alt="...">
+    </div>
+    {% endif %}
+  </div>
+  {% endfor %}
+
+
+  
+</div>
+{% endblock gallerycontent %}
+
